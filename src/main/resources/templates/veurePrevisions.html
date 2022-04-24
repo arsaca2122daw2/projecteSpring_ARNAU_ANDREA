@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>CRUD PREVISIONS</h1>
+<h2 th:text="'Ciutat seleccionada: '+${ ciutat }"></h2>
+<div>
+    <table>
+        <tr>
+            <th>Dia</th>
+            <th>Temperatura</th>
+            <th>Previsió</th>
+        </tr>
+        <tr th:each="previsio : ${previsions}">>
+            <td th:text="${ previsio.dia }"></td>
+            <td th:text="${ previsio.temperatura }"></td>
+            <td th:text="${ previsio.icona }"></td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <a href="/">Torna al menú</a>
+</div>
+
+</body>
+</html>

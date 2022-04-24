@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>MODIFICAR PREVISIÓ</h1>
+
+<div class="mainModificarPrevisio">
+    <form action="/modificar">
+        <p>Temperatura</p>
+        <input type="number" name="temperatura" step="0.1">
+        <p>Icona de la previsió</p>
+        <select name="icona">
+            <option value="solejat"> Solejat <img class=""> </option>
+            <option value="nuvols"> Nuvòls <img class=""> </option>
+            <option value="pluja"> Pluja <img class=""> </option>
+            <option value="vents"> Vents Forts <img class=""> </option>
+            <option value="apocalipsis"> Apocalipsis <img class=""> </option>
+        </select>
+        <input type="hidden" th:value="${ ciutat }" name="ciutat">
+        <input type="hidden" th:value="${ dia }" name="dia">
+        <button type="submit">Enviar dades</button>
+    </form>
+</div>
+</div>
+</body>
+</html>
