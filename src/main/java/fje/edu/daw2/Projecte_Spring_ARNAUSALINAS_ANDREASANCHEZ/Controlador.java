@@ -20,15 +20,16 @@ public class Controlador {
     ArrayList<Previsio> veurePrevisions = new ArrayList<>();
 
     @Autowired
-    private static MongoDBRepositori bbddMongoDB;
+    private MongoDBRepositori repositori;
 
     @ModelAttribute("previsions")
     public List<Previsio> inicialitzar() {
 
-        for (Previsio c : bbddMongoDB.findAll()) {
-            totalPrevisions.add(c);
+        List<Previsio> previsios = new ArrayList<>();
+        for (Previsio c : repositori.findAll()) {
+            previsios.add(c);
         }
-        return totalPrevisions;
+        return previsios;
     }
 
     @GetMapping("/veureCRUD")
@@ -83,6 +84,7 @@ public class Controlador {
 
         Previsio previsio = new Previsio(id, temperatura, icona, ciutat, dia);
         totalPrevisions.add(previsio);
+        repositori.save(previsio);
 
         model.addAttribute("previsions", veurePrevisions);
         model.addAttribute("ciutat", ciutat);
@@ -108,6 +110,7 @@ public class Controlador {
             for(i = 0; i < totalPrevisions.size(); i++){
                 if(totalPrevisions.get(i).getCiutat().equals(ciutat) && totalPrevisions.get(i).getDia().equals(dia)){
                     totalPrevisions.remove(i);
+                    repositori.deleteAllByCiutatAndDia(ciutat, dia);
                     break;
                 }
             }
@@ -123,6 +126,7 @@ public class Controlador {
         }
         Previsio previsio = new Previsio(id, temperatura, icona, ciutat, dia);
         totalPrevisions.add(previsio);
+        repositori.save(previsio);
 
         veurePrevisions.clear();
 
@@ -153,6 +157,7 @@ public class Controlador {
             }
         }
 
+        repositori.deleteAllByCiutatAndDia(ciutat, dia);
         veurePrevisions.clear();
 
         for(int i = 0; i < totalPrevisions.size(); i++){

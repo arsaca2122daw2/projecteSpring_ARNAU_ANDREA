@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css"
+          integrity="sha512-r/Gan7PMSRovDus++vDS2Ayutc/cSdl268u047n4z+k7GYuR7Hiw71FsT3QQxdKJBVHYttOJ6IGLnlM9IoMToQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <h1>CRUD PREVISIONS</h1>
@@ -16,8 +19,14 @@
         </tr>
         <tr th:each="previsio : ${previsions}">>
             <td th:text="${ previsio.dia }"></td>
-            <td th:text="${ previsio.temperatura }"></td>
-            <td th:text="${ previsio.icona }"></td>
+            <td th:text="${ previsio.temps }"></td>
+            <td th:switch="${previsio.icona}">
+                <i th:case="solejat" class="wi wi-day-sunny"></i>
+                <i th:case="nuvols" class="wi wi-day-cloudy"></i>
+                <i th:case="pluja" class="wi wi-day-rain"></i>
+                <i th:case="vents" class="wi wi-day-windy"></i>
+                <i th:case="apocalipsis" class="wi wi-meteor"></i>
+            </td>
         </tr>
     </table>
 </div>

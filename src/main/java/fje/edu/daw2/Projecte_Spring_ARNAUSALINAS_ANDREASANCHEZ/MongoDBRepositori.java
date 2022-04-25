@@ -11,11 +11,12 @@ import java.util.List;
  * @version  1.0 4.4.2019
  */
 
-public interface MongoDBRepositori extends MongoRepository<Previsio, String> {
+    public interface MongoDBRepositori extends MongoRepository<Previsio, String> {
 
     Previsio findByTemperatura(float temperatura);
     List<Previsio> findByDia(String dia);
-    List<Previsio> findByTemps(String temps);
     List<Previsio> findByCiutat(String ciutat);
+    List<Previsio> findByIcona(String icona);
+    void deleteAllByCiutatAndDia(String ciutat, String dia);
     void deleteById(String id);
 }

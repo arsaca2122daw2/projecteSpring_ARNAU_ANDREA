@@ -1,8 +1,8 @@
 package fje.edu.daw2.Projecte_Spring_ARNAUSALINAS_ANDREASANCHEZ;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Previsio {
+public class Previsio implements Serializable {
     int id;
     double temperatura;
     String icona, ciutat, dia;
@@ -27,11 +27,11 @@ public class Previsio {
         this.id = id;
     }
 
-    public double getTemperatura() {
+    public double getTemps() {
         return temperatura;
     }
 
-    public void setTemperatura(double temperatura) {
+    public void setTemps(double temperatura) {
         this.temperatura = temperatura;
     }
 
